@@ -1,7 +1,7 @@
 import React, { Component,Fragment } from 'react'
 import '../styles/Dish.css';
-import Button from '@material-ui/core/Button';
-
+import {Card,CardContent ,List,ListSubheader,ListItem,ListItemIcon, ListItemText} from '@material-ui/core';
+import ScatterPlot from '@material-ui/icons/ScatterPlot';
 export class Flag extends Component {
     
     render(){
@@ -26,29 +26,33 @@ export class Ingredient extends Component {
         )
     }
 }
-class Dish extends Component {   
-    
-    ingredients =['cebolla','palta','ajo']
-    countIgredients (){
-        return this.ingredients.length;
-    }
+class Dish extends Component {       
+   
     render(){      
-        const {params}=this.props.match;
+        
         return (
-            <div className="dish">
-                <h1>{params.name}</h1>
-                <h2>{this.countIgredients()}</h2>                
-                <ul>
-                    {this.ingredients.map((ingredient,index)=>(
-                        <li key={index}>
-                            {ingredient}
-                        </li>
-                    ))
-                }
-                </ul>
-                <Button variant="contained" color="primary">Elegir</Button>
-                
-            </div>
+            <Card className='card'>
+                <CardContent>
+                    <List
+                        component='nav'
+                        subheader={
+                            <ListSubheader component="div">
+                                {this.props.name}
+                            </ListSubheader>
+                        }
+                     >
+                         {this.props.ingredients.map((ingredient,index)=>(
+                             <ListItem button key={index} alignItems="flex-start">
+                                 <ListItemIcon>
+                                     <ScatterPlot/>
+                                 </ListItemIcon>
+                                 <ListItemText inset primary={ingredient}/>
+                             </ListItem>
+                         ))}
+                     </List>
+                </CardContent>
+            </Card>
+            
         )
     }
 
