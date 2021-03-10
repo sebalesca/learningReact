@@ -26,16 +26,17 @@ export class Ingredient extends Component {
         )
     }
 }
-class Dish extends Component {
+class Dish extends Component {   
+    
     ingredients =['cebolla','palta','ajo']
     countIgredients (){
         return this.ingredients.length;
     }
     render(){      
-
+        const {params}=this.props.match;
         return (
             <div className="dish">
-                <h1>{this.props.name}</h1>
+                <h1>{params.name}</h1>
                 <h2>{this.countIgredients()}</h2>                
                 <ul>
                     {this.ingredients.map((ingredient,index)=>(
