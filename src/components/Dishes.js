@@ -1,24 +1,33 @@
 import React,{Component} from 'react';
-import data from '../assets/data/dishes.json';
-import Restaurant from '@material-ui/icons/Restaurant';
 import Dish from './Dish';
 import {Button,GridList} from '@material-ui/core'
 class Dishes extends Component{
+
     goBack=e=>{
         e.preventDefault();
         this.props.history.push('/')
     }
-render (){
+
+    UpdateDish=(index,updateName)=>{
+        //sigo elevando la actualizacion al componente app 
+        //mediante las props
+        this.props.onUpdateDish(index,updateName);
+    }
+
+
+    render (){
     return(
-        <div>
-        <h1>Platillos</h1>
-        <Button variant="contained" color="secondary" onClick={this.goBack}>
-          Regresar
-        </Button>
+        <div>      
         <GridList>
                 {
-                    data.dishes.map((dish,index)=>(
-                        <Dish key={index} name={dish.name} ingredients={dish.ingredients}/>
+                    this.props.data.map((dish,index)=>(
+                        <Dish key={index} 
+                        name={dish.name} 
+                        ingredients={dish.ingredients} 
+                        index={index}
+                        //envio la prop que es un metodo para la comunicacion del hijo
+                        onUpdateDish={this.UpdateDish}
+                        />
                     ))
                 }
         </GridList>    

@@ -1,7 +1,8 @@
 import React, { Component,Fragment } from 'react'
 import '../styles/Dish.css';
-import {Card,CardContent ,List,ListSubheader,ListItem,ListItemIcon, ListItemText} from '@material-ui/core';
-import ScatterPlot from '@material-ui/icons/ScatterPlot';
+import {Card,CardContent,IconButton ,List,ListSubheader,ListItem,ListItemIcon, ListItemText, TextField} from '@material-ui/core';
+import {ScatterPlot,Edit} from '@material-ui/icons';
+
 export class Flag extends Component {
     
     render(){
@@ -27,7 +28,25 @@ export class Ingredient extends Component {
     }
 }
 class Dish extends Component {       
-   
+   state={
+    edit:false,
+    name:this.props.name
+   }
+   edit =e=>{
+    this.setState({edit:!this.state.edit})
+   }
+   handleChange=e=>{
+       /**
+        * hago una copia del estado para manipularlo
+        */
+       let newState={...this.state}
+       newState.name=e.currentTarget.value;
+       this.setState(newState);
+       /*aca debo elevar los cambios al contenedor padre mediante un método
+        enviandole quien es (index) y el nuevo valor del name 
+       */
+        this.props.onUpdateDish(this.props.index,newState.name)
+   }
     render(){      
         
         return (
@@ -37,7 +56,20 @@ class Dish extends Component {
                         component='nav'
                         subheader={
                             <ListSubheader component="div">
-                                {this.props.name}
+                                {this.state.edit? (
+                                    <TextField
+                                        label='Platillos...'
+                                        type='text'
+                                        margin='normal'
+                                        variant='outlined'
+                                        value={this.state.name}
+                                        onChange={this.handleChange}
+                                    />
+                                ):(this.state.name
+                                )}
+                            <IconButton size='sm' onClick={this.edit}>
+                                <Edit/>
+                            </IconButton>    
                             </ListSubheader>
                         }
                      >

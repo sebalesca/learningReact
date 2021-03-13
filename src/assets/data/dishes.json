@@ -1,5 +1,4 @@
-{
-  "dishes": [
+[
     {
       "id": "1",
       "name": "Tacos",
@@ -37,4 +36,4 @@
       "ingredients": ["Arroz", "Azafrán", "Tomate", "Mariscos", "Ajo", "Aceite"]
     }
   ]
-}
+
