@@ -17,6 +17,8 @@ handleClick=e=>{
     e.preventDefault();
     //para acceder directamente a la refercia
     console.log(this.newDish.value);
+    //le envio el valor de la referencia para que el padre actualice el estado general y lo agregue 
+    this.props.onAddDish(this.newDish.value);
     
 }
 render(){

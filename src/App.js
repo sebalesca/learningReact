@@ -24,13 +24,26 @@ class App extends Component {
     newState.dishes[index].name=updateName;
     this.setState(newState);
   }
+  addDish=(nameDish)=>{
+    //como debo acceder al estado uso una arrow function
+        //guardo una copia para manipular el estado
+        let newState={...this.state};
+        const newDish={
+          "id": newState.dishes.length,
+          "name": nameDish,
+          "country": "España",
+          "ingredients": ["Arroz", "Azafrán", "Tomate", "Mariscos", "Ajo", "Aceite"]
+        }     
+        newState.dishes.push(newDish);
+        this.setState(newState);
+  }
   render(){
     console.log(this.state.dishes)
     return (
       <div className="App">
         <Header/>
         {/* <Dish name={dish}/> */}
-        <NewDish/>
+        <NewDish onAddDish={this.addDish}/>
         <Dishes data={this.state.dishes} 
         onUpdateDish={this.updateDish}
         />
