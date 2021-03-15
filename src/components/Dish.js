@@ -74,11 +74,11 @@ class Dish extends Component {
                         }
                      >
                          {this.props.ingredients.map((ingredient,index)=>(
-                             <ListItem button key={index} alignItems="flex-start">
+                             <ListItem button key={index}>
                                  <ListItemIcon>
                                      <ScatterPlot/>
                                  </ListItemIcon>
-                                 <ListItemText inset primary={ingredient}/>
+                                 <ListItemText  primary={ingredient}/>
                              </ListItem>
                          ))}
                      </List>
