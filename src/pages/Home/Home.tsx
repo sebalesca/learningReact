@@ -1,19 +1,20 @@
 import React from 'react';
+import Box from '@mui/material/Box';
 import Header from '../../components/Header';
 import Sidebar from '../../components/Sidebar';
 import NotificationsCarousel from '../../components/NotificationsCarousel';
 
 const Home: React.FC = () => {
   return (
-    <div style={{ display: 'flex' }}>
+    <Box sx={{ display: 'flex' }}>
       <Sidebar />
-      <div style={{ flex: 1 }}>
+      <Box component="main" sx={{ flexGrow: 1 }}>
         <Header />
-        <div style={{ padding: '1rem' }}>
+        <Box sx={{ p: 2 }}>
           <NotificationsCarousel />
-        </div>
-      </div>
-    </div>
+        </Box>
+      </Box>
+    </Box>
   );
 };
 

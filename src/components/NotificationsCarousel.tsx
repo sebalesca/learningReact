@@ -1,6 +1,8 @@
 import React from 'react';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
+import Paper from '@mui/material/Paper';
+import Typography from '@mui/material/Typography';
 
 const NotificationsCarousel: React.FC = () => {
   const items = [
@@ -18,9 +20,9 @@ const NotificationsCarousel: React.FC = () => {
       interval={5000}
     >
       {items.map((text, index) => (
-        <div key={index}>
-          <p>{text}</p>
-        </div>
+        <Paper key={index} sx={{ p: 2 }}>
+          <Typography>{text}</Typography>
+        </Paper>
       ))}
     </Carousel>
   );
