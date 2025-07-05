@@ -1,25 +1,31 @@
 import React from 'react';
+import Drawer from '@mui/material/Drawer';
+import List from '@mui/material/List';
+import ListItem from '@mui/material/ListItem';
+import ListItemText from '@mui/material/ListItemText';
+import Toolbar from '@mui/material/Toolbar';
+
+const drawerWidth = 240;
 
 const Sidebar: React.FC = () => {
   return (
-    <aside
-      style={{
-        width: '200px',
-        backgroundColor: '#f5f5f5',
-        padding: '1rem',
-        borderRight: '1px solid #ddd',
-        height: '100vh',
-        boxSizing: 'border-box',
+    <Drawer
+      variant="permanent"
+      sx={{
+        width: drawerWidth,
+        flexShrink: 0,
+        [`& .MuiDrawer-paper`]: { width: drawerWidth, boxSizing: 'border-box' },
       }}
     >
-      <nav>
-        <ul style={{ listStyle: 'none', padding: 0 }}>
-          <li>Inicio</li>
-          <li>Perfil</li>
-          <li>Configuración</li>
-        </ul>
-      </nav>
-    </aside>
+      <Toolbar />
+      <List>
+        {['Inicio', 'Perfil', 'Configuración'].map((text) => (
+          <ListItem button key={text}>
+            <ListItemText primary={text} />
+          </ListItem>
+        ))}
+      </List>
+    </Drawer>
   );
 };
 

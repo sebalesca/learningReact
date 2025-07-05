@@ -1,10 +1,17 @@
 import React from 'react';
+import AppBar from '@mui/material/AppBar';
+import Toolbar from '@mui/material/Toolbar';
+import Typography from '@mui/material/Typography';
 
 const Header: React.FC = () => {
   return (
-    <header style={{ backgroundColor: '#1976d2', color: '#fff', padding: '1rem' }}>
-      <h1>Webportal</h1>
-    </header>
+    <AppBar position="static">
+      <Toolbar>
+        <Typography variant="h6" component="div">
+          Webportal
+        </Typography>
+      </Toolbar>
+    </AppBar>
   );
 };
 
