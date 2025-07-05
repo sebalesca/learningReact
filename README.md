@@ -1,4 +1,4 @@
-# Aprendiento
+# Aprendiendo
 
 Sitio de pruebas basado en Vite y React.
 
